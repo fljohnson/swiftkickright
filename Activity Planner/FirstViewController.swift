@@ -19,10 +19,10 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //cannot call value of non-function type 'UserDefaults'
+        if UserDefaults.standard.object(forKey: "activities") != nil {
         
-        if UserDefaults.standardUserDefaults().objectForKey("activities") != nil {
-        
-        activities = UserDefaults.standardUserDefaults().objectForKey("activities") as! [String]!
+        activities = UserDefaults.standard.object(forKey: "activities") as! [String]!
         }
     }
     
@@ -49,8 +49,8 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
             activities.remove(at: indexPath.row)
-            
-            UserDefaults.standardUserDefaults().setObject(activities, forKey: "activities")
+            // cannot call value of non-function type 'UserDefaults' 
+            UserDefaults.standard.set(activities, forKey: "activities")
             
             activityTable.reloadData()
             

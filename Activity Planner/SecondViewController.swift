@@ -19,8 +19,8 @@ class SecondViewController: UIViewController {
         activities.append(activity.text!)
         
         activity.text = ""
-        
-        UserDefaults.standardUserDefaults().setObject(activities, forKey: "activities")
+        // cannot call value of non-function type 'UserDefaults' 
+        UserDefaults.standard.set(activities, forKey: "activities")
         
     
         
@@ -33,8 +33,8 @@ class SecondViewController: UIViewController {
         
     }
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, withEvent event: UIEvent?) {
+    //'touchesBegan(_:withEvent:)' has been renamed to 'touchesBegan(_:with:)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
