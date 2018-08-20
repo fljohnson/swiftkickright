@@ -20,7 +20,7 @@ class SecondViewController: UIViewController {
         
         activity.text = ""
         
-        NSUserDefaults.standardUserDefaults().setObject(activities, forKey: "activities")
+        UserDefaults.standardUserDefaults().setObject(activities, forKey: "activities")
         
     
         
@@ -34,7 +34,7 @@ class SecondViewController: UIViewController {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
     

@@ -20,9 +20,9 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("activities") != nil {
+        if UserDefaults.standardUserDefaults().objectForKey("activities") != nil {
         
-        activities = NSUserDefaults.standardUserDefaults().objectForKey("activities") as! [String]!
+        activities = UserDefaults.standardUserDefaults().objectForKey("activities") as! [String]!
         }
     }
     
@@ -34,7 +34,7 @@ class FirstViewController: UIViewController, UITableViewDelegate {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
         cell.textLabel?.text = activities[indexPath.row]
         
@@ -47,10 +47,10 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
         
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            activities.removeAtIndex(indexPath.row)
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            activities.remove(at: indexPath.row)
             
-            NSUserDefaults.standardUserDefaults().setObject(activities, forKey: "activities")
+            UserDefaults.standardUserDefaults().setObject(activities, forKey: "activities")
             
             activityTable.reloadData()
             
@@ -60,7 +60,7 @@ class FirstViewController: UIViewController, UITableViewDelegate {
 
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
        activityTable.reloadData()
     }
     
