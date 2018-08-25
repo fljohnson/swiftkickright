@@ -74,7 +74,7 @@ class PlayerDetailsViewController: UITableViewController {
         // Used the text from the First View Controller to set the label
 		if(player != nil)
 		{
-			nameTextField.text = player.name
+			nameTextField.text = player!.name
 		}
 
     }	
