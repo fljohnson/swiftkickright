@@ -89,6 +89,7 @@ extension PlayersViewController {
 		{
 			controller!.player = players[thePath!.row]
 		}
+		controller!.goods = "HIT!";
 
 	}
 }

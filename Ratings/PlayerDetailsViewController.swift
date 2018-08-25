@@ -34,6 +34,7 @@ class PlayerDetailsViewController: UITableViewController {
   
   // MARK: - Properties
   var player: Player?
+  var goods: String?
   
   var game: String = "Chess" {
     didSet {
@@ -74,8 +75,17 @@ class PlayerDetailsViewController: UITableViewController {
         // Used the text from the First View Controller to set the label
 		if(player != nil)
 		{
-			nameTextField.text = player!.name
+//			nameTextField.text = player!.name
 		}
+		if(goods != nil)
+		{	
+			nameTextField.text = goods
+		}
+		else
+		{
+			nameTextField.text = "MISS!"
+		}
+		
 
     }	
 }
