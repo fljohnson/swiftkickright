@@ -88,7 +88,7 @@ extension PlayersViewController {
 		let thePath = tableView.indexPathForSelectedRow
 		if(thePath != nil && controller != nil)
 		{
-			controller?.player = players[thePath?.row]
+			controller?.player = players[thePath!.row]
 		}
 		controller?.goods = "HIT!";
 
