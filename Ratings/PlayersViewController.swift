@@ -77,7 +77,7 @@ extension PlayersViewController {
 
   override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
 	let player = players[indexPath.row]
-	performSegue(withIdentifier:"Zsg-bI-zZp",sender:self);
+	//performSegue(withIdentifier:"Zsg-bI-zZp",sender:self);
   }
 
 }
