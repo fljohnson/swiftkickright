@@ -74,4 +74,10 @@ extension PlayersViewController {
     cell.player = player
     return cell
   }
+
+  override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+	let player = players[indexPath.row]
+	performSegue(withIdentifier:"Vri-F8-biZ",sender:self);
+  }
+
 }
