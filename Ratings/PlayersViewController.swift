@@ -80,6 +80,7 @@ extension PlayersViewController {
 	//performSegue(withIdentifier:"Zsg-bI-zZp",sender:self);
   }
 */
+// "?." is for optional chaining, and fails gracefully on nil dereference; "!." is for forced unwrapping, and would cause a crash on nil dereference
 	override func prepare(for segue: UIStoryboardSegue, 
       sender: Any?)
 	{
@@ -87,9 +88,9 @@ extension PlayersViewController {
 		let thePath = tableView.indexPathForSelectedRow
 		if(thePath != nil && controller != nil)
 		{
-			controller!.player = players[thePath!.row]
+			controller?.player = players[thePath?.row]
 		}
-		controller!.goods = "HIT!";
+		controller?.goods = "HIT!";
 
 	}
 }
