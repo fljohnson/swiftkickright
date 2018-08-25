@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="60" id="Wlg-vU-ttm" customClass="PlayerCell" customModule="Ratings" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="60" id="Wlg-vU-ttm" customClass="PlayerCell" customModule="Ratings" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wlg-vU-ttm" id="1ZR-uz-1Qr">
@@ -64,6 +64,7 @@
                                     <outlet property="gameLabel" destination="cWc-Km-Wxy" id="1Tx-LD-Xek"/>
                                     <outlet property="nameLabel" destination="wb5-F8-Uha" id="8in-N2-hfE"/>
                                     <outlet property="ratingImageView" destination="mhb-km-IDI" id="R5U-GF-8Cf"/>
+									<segue destination="Zsg-bI-zZp" kind="presentation" id="Vri-F8-biZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
