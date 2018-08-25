@@ -67,6 +67,17 @@ class PlayerDetailsViewController: UITableViewController {
       gamePickerViewController.selectedGame = game
     }
   }
+
+  override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Used the text from the First View Controller to set the label
+		if(player != nil)
+		{
+			nameTextField.text = player.name
+		}
+
+    }	
 }
 
 // MARK: - IBActions
@@ -89,5 +100,7 @@ extension PlayerDetailsViewController {
     }
   }
 }
+
+
 
 

@@ -74,10 +74,21 @@ extension PlayersViewController {
     cell.player = player
     return cell
   }
-
+/*
   override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
 	let player = players[indexPath.row]
 	//performSegue(withIdentifier:"Zsg-bI-zZp",sender:self);
   }
+*/
+	override func prepare(for segue: UIStoryboardSegue, 
+      sender: Any?)
+	{
+		let controller = segue.destination as? PlayerDetailsViewController
+		let thePath = tableView.indexPathForSelectedRow
+		if(thePath != nil && controller != nil)
+		{
+			controller.player = players[thePath.row]
+		}
 
+	}
 }
