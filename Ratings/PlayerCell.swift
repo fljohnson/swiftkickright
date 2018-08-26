@@ -44,7 +44,7 @@ class PlayerCell: UITableViewCell {
       
       gameLabel.text = player.game
       nameLabel.text = player.name
-      ratingImageView.image = image(forRating: player.rating)
+      ratingImageView.image = image(forRating: Int(player.rating))
     }
   }
   

@@ -36,14 +36,14 @@ class Player:NSManagedObject {
   // MARK: - Properties
   var name: String?
   var game: String?
-  var rating: Int = 0
+  var rating: Int32 = 0
 
 
 	func update(name:String?, game:String? ,rating: Int)
 	{
 		self.name = name	
 		self.game = game
-		self.rating = rating
+		self.rating = Int32(rating)
 	}
 	
 }
