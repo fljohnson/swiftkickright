@@ -35,8 +35,8 @@ final class SampleData:NSObject {
 /**
      Persistent container: use NSPersistentContainer to create the Core Data stack
     */
-    static var persistentContainer: NSPersistentContainer 
-static func initContainer()
+    static var persistentContainer: NSPersistentContainer? 
+static func initContainer() -> NSPersistentContainer
 {
         
         let container = NSPersistentContainer(name: "Ratings")
@@ -67,13 +67,10 @@ static func initContainer()
   
   static func generatePlayersData() -> [Player] {
 	persistentContainer = initContainer()
-	let taskContext = persistentContainer.viewContext
+	let taskContext = persistentContainer!.viewContext
 	var rv: [Player] = []
 
-	if(taskContext == nil)
-	{
-		taskContext = persistentContainer.newBackgroundContext()
-	}
+	
 	if(taskContext != nil)
 {
 rv = [
@@ -104,7 +101,7 @@ rv = [
 
 	static func generatePlayer(name:String?,game:String?,rating:Int) -> Player {
 	
-		let taskContext = persistentContainer.viewContext
+		let taskContext = persistentContainer!.viewContext
 		guard let rv = generatePlayer(context:taskContext, name: name, game: game, rating: rating) as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
 		            }
