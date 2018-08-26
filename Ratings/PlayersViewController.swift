@@ -33,6 +33,7 @@ import UIKit
 class PlayersViewController: UITableViewController {
   
   // MARK: - Properties
+var kawhubba = SampleData.persistentContainer
   var players = SampleData.generatePlayersData()
 }
 

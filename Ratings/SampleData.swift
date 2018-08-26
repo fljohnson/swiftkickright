@@ -35,9 +35,7 @@ final class SampleData:NSObject {
 /**
      Persistent container: use NSPersistentContainer to create the Core Data stack
     */
-    static var persistentContainer: NSPersistentContainer? 
-static func initContainer() -> NSPersistentContainer
-{
+    static var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Ratings")
         
@@ -62,29 +60,24 @@ static func initContainer() -> NSPersistentContainer
         container.viewContext.automaticallyMergesChangesFromParent = true
         
         return container
-    }
+    }()
 
   
   static func generatePlayersData() -> [Player] {
-	persistentContainer = initContainer()
-	var taskContext:NSManagedObjectContext? = nil
-	if(persistentContainer != nil)
-	{
-		taskContext = persistentContainer!.viewContext
-	}	
-	//let taskContext = persistentContainer!.viewContext
+	let taskContext = persistentContainer.viewContext
 	var rv: [Player] = []
 
-	
+	if(taskContext == nil)
+	{
+		taskContext = persistentContainer.newBackgroundContext()
+	}
 	if(taskContext != nil)
 {
-/*
 rv = [
       generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
       generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
       generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
     ]
-*/
 /*
 	do {
         try taskContext.save(); //that's counterintuitive
@@ -108,7 +101,7 @@ rv = [
 
 	static func generatePlayer(name:String?,game:String?,rating:Int) -> Player {
 	
-		let taskContext = persistentContainer!.viewContext
+		let taskContext = persistentContainer.viewContext
 		guard let rv = generatePlayer(context:taskContext, name: name, game: game, rating: rating) as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
 		            }
