@@ -33,7 +33,7 @@ import UIKit
 class PlayersViewController: UITableViewController {
   
   // MARK: - Properties
-var kawhubba = SampleData.persistentContainer
+
   var players = SampleData.generatePlayersData()
 }
 
@@ -61,7 +61,14 @@ extension PlayersViewController {
 
 // MARK: - UITableViewDataSource
 extension PlayersViewController {
-  
+	override func viewDidAppear(_ animated:Bool)
+	{
+		let alertController = UIAlertController(title: "Welcome to My First App", message: SampleData.mensaje, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+		super.viewDidAppear(_ animated:animated)
+	}  
+
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return players.count
   }

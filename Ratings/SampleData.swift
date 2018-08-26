@@ -32,6 +32,7 @@ import CoreData
 
 final class SampleData:NSObject {
 
+static var mensaje: String = "Hello World"
 /**
      Persistent container: use NSPersistentContainer to create the Core Data stack
     */
@@ -45,6 +46,7 @@ final class SampleData:NSObject {
         */
         container.loadPersistentStores(completionHandler: { (_, error) in
             guard let error = error as NSError? else { return }
+			mensaje = "WHOOPS:"
             fatalError("Unresolved error \(error), \(error.userInfo)")
         })
         
