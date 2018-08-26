@@ -29,7 +29,6 @@
  */
 
 import CoreData
-import AppKit
 
 final class SampleData:NSObject {
 
@@ -46,8 +45,6 @@ final class SampleData:NSObject {
         */
         container.loadPersistentStores(completionHandler: { (_, error) in
             guard let error = error as NSError? else { return }
-			let whoops = NSAlert(error:error)
-			whoops.runModal()
             fatalError("Unresolved error \(error), \(error.userInfo)")
         })
         
@@ -69,6 +66,7 @@ final class SampleData:NSObject {
   static func generatePlayersData() -> [Player] {
 	let taskContext = persistentContainer.viewContext
 
+/*
     var rv = [
       generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
       generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
@@ -78,11 +76,10 @@ final class SampleData:NSObject {
 	do {
         try taskContext.save(); //that's counterintuitive)
     } catch {
-			let whoops = NSAlert(error:error)
-			whoops.runModal()
 		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
     }
-	
+	*/
+var rv = []
 	return rv
   }
 
