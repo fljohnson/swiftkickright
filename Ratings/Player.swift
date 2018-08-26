@@ -39,7 +39,7 @@ class Player:NSManagedObject {
   var rating: Int = 0
 
 
-	func update(name:String?, game:String? ,rating: Int?)
+	func update(name:String?, game:String? ,rating: Int)
 	{
 		self.name = name	
 		self.game = game

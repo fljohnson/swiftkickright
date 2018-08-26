@@ -88,4 +88,15 @@ final class SampleData:NSObject {
 		
 	}
 
+	static func generatePlayer(name:String?,game:String?,rating:Int?) -> Player {
+	
+		let taskContext = persistentContainer.viewContext
+		guard let rv = generatePlayer(context:taskContext, name: name, game: game, rating: rating), as? Player else {
+		                fatalError("Error: Failed to create a new Player object!")
+		                return nil
+		            }
+		return rv
+		
+	}
+
 }
