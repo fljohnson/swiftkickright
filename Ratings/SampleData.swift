@@ -60,7 +60,7 @@ static var mensaje: String = "Hello World"
          notification and calling mergeChanges(fromContextDidSave notification: Notification)
         */
         container.viewContext.automaticallyMergesChangesFromParent = true
-        
+        mensaje = "SUCCESS!"
         return container
     }()
 
