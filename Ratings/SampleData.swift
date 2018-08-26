@@ -88,19 +88,19 @@ static var mensaje: String = "Hello World"
 
 	if(taskContext != nil)
 {
-rv = [
-      generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
-      generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
-      generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
-    ]
-/*
-	do {
-        try taskContext.save(); //that's counterintuitive
-    } catch {
-		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
-    }*/
-	
-}
+	rv = [
+		  generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
+		  generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
+		  generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
+		]
+
+		do {
+		    try taskContext.save(); //that's counterintuitive
+		} catch {
+			fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
+		}
+		
+	}
 	return rv
   }
 
@@ -109,7 +109,7 @@ rv = [
 		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Player", into: context) as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
 		            }
-		//rv.update(name:name,game:game,rating:rating)
+		rv.update(name:name,game:game,rating:rating)
 		return rv
 		
 	}
