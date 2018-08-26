@@ -35,7 +35,7 @@ final class SampleData:NSObject {
 /**
      Persistent container: use NSPersistentContainer to create the Core Data stack
     */
-    static lazy var persistentContainer: NSPersistentContainer = {
+    static var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Ratings")
         

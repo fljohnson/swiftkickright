@@ -61,7 +61,10 @@ class PlayerDetailsViewController: UITableViewController {
     if segue.identifier == "SavePlayerDetail",
       let playerName = nameTextField.text {
       player = SampleData.generatePlayer(name: playerName, game: "Chess", rating: 1)
-		player.save()
+		if(player != nil)
+		{
+			player!.save()
+		}
 	
     }
     
