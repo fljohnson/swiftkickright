@@ -73,7 +73,7 @@ final class SampleData:NSObject {
     ]
 
 	do {
-        taskContext.save(); //that's counterintuitive)
+        try taskContext.save(); //that's counterintuitive)
     } catch {
 		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
     }
