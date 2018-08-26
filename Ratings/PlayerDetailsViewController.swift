@@ -63,7 +63,11 @@ class PlayerDetailsViewController: UITableViewController {
       player = SampleData.generatePlayer(name: playerName, game: "Chess", rating: 1)
 		if(player != nil)
 		{
-			SampleData.persistentContainer.viewContext.save() //this only works (maybe) because we know that much about SampleData
+			try? SampleData.persistentContainer.viewContext.save() //this only works (maybe) because we know that much about SampleData
+		}
+		else
+		{
+			fatalError("Error:Blew up trying to save in PlayerDetailsViewController::prepare()")
 		}
 	
     }
