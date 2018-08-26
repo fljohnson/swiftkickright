@@ -71,13 +71,13 @@ final class SampleData:NSObject {
       generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
       generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
     ]
-	try? taskContext.save(); //that's counterintuitive
-	if(rv == nil)
-	{
+
+	do {
+        taskContext.save(); //that's counterintuitive)
+    } catch {
+		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
+    }
 	
-		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData()")
-	
-	} 
 	return rv
   }
 
