@@ -64,9 +64,13 @@ final class SampleData:NSObject {
 
   
   static func generatePlayersData() -> [Player] {
-	let taskContext = persistentContainer.viewContext
+	var taskContext = persistentContainer.viewContext
 	var rv: [Player] = []
 
+	if(taskContext == nil)
+	{
+		taskContext = persistentContainer.newBackgroundContext()
+	}
 	if(taskContext != nil)
 {
 rv = [
