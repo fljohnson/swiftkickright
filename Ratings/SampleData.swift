@@ -31,6 +31,7 @@
 import CoreData
 
 final class SampleData:NSObject {
+static var greatCon: NSManagedObjectContext?
 
 static var mensaje: String = "Hello World"
 /**
@@ -60,13 +61,15 @@ static var mensaje: String = "Hello World"
          notification and calling mergeChanges(fromContextDidSave notification: Notification)
         */
         container.viewContext.automaticallyMergesChangesFromParent = true
+
+		greatCon = container.viewContext 
         mensaje = "SUCCESS!"
         return container
     }()
 
   
   static func generatePlayersData() -> [Player] {
-	let taskContext = persistentContainer.viewContext
+	let taskContext = greatCon //persistentContainer.viewContext
 	var rv: [Player] = []
 
 	if(taskContext != nil)
