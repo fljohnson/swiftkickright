@@ -35,7 +35,9 @@ final class SampleData:NSObject {
 /**
      Persistent container: use NSPersistentContainer to create the Core Data stack
     */
-    static var persistentContainer: NSPersistentContainer = {
+    static var persistentContainer: NSPersistentContainer 
+static func initContainer()
+{
         
         let container = NSPersistentContainer(name: "Ratings")
         
@@ -60,11 +62,12 @@ final class SampleData:NSObject {
         container.viewContext.automaticallyMergesChangesFromParent = true
         
         return container
-    }()
+    }
 
   
   static func generatePlayersData() -> [Player] {
-	var taskContext = persistentContainer.viewContext
+	persistentContainer = initContainer()
+	let taskContext = persistentContainer.viewContext
 	var rv: [Player] = []
 
 	if(taskContext == nil)
