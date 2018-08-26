@@ -67,7 +67,7 @@ static func initContainer() -> NSPersistentContainer
   
   static func generatePlayersData() -> [Player] {
 	persistentContainer = initContainer()
-	var taskContext:NSManagedObjectContext = nil
+	var taskContext:NSManagedObjectContext? = nil
 	if(persistentContainer != nil)
 	{
 		taskContext = persistentContainer!.viewContext
