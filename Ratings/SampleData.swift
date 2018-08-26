@@ -28,15 +28,64 @@
  * THE SOFTWARE.
  */
 
-import Foundation
+import CoreData
 
-final class SampleData {
+final class SampleData:NSObject {
+
+/**
+     Persistent container: use NSPersistentContainer to create the Core Data stack
+    */
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Ratings")
+        
+        /**
+         fatalError() causes the application to generate a crash log and terminate.
+         You should not use this function in a shipping application.
+        */
+        container.loadPersistentStores(completionHandler: { (_, error) in
+            guard let error = error as NSError? else { return }
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        })
+        
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.undoManager = nil // We don't need undo so set it to nil.
+        container.viewContext.shouldDeleteInaccessibleFaults = true
+        
+        /**
+         Merge the changes from other contexts automatically.
+         You can also choose to merge the changes by observing NSManagedObjectContextDidSave
+         notification and calling mergeChanges(fromContextDidSave notification: Notification)
+        */
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
+        return container
+    }()
+
   
   static func generatePlayersData() -> [Player] {
-    return [
-      Player(name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
-      Player(name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
-      Player(name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
+	let taskContext = persistentContainer.viewContext
+
+    var rv = [
+      generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
+      generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
+      generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
     ]
+	for item in rv {
+		item.save()
+	}
+	return rv
   }
+
+	static func generatePlayer(context:NSManagedObjectContext,name:String?,game:String?,rating:Int?) -> Player {
+	
+		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Player", into: taskContext) as? Player else {
+		                fatalError("Error: Failed to create a new Player object!")
+		                return nil
+		            }
+		rv.update(name,game,rating)
+		return rv
+		
+	}
+
 }

@@ -28,12 +28,22 @@
  * THE SOFTWARE.
  */
 
-import Foundation
+import CoreData
 
-struct Player {
+
+class Player:NSManagedObject {
   
   // MARK: - Properties
   var name: String?
   var game: String?
-  var rating: Int
+  var rating: Int = 0
+
+
+	func update(name:String?, game:String? ,rating: Int?)
+	{
+		self.name = name	
+		self.game = game
+		self.rating = rating
+	}
+	
 }
