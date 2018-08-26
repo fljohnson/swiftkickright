@@ -63,7 +63,7 @@ class PlayerDetailsViewController: UITableViewController {
       player = SampleData.generatePlayer(name: playerName, game: "Chess", rating: 1)
 		if(player != nil)
 		{
-			player!.save()
+			SampleData.persistentContainer.viewContext.save() //this only works (maybe) because we know that much about SampleData
 		}
 	
     }
