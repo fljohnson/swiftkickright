@@ -73,11 +73,13 @@ static func initContainer() -> NSPersistentContainer
 	
 	if(taskContext != nil)
 {
+/*
 rv = [
       generatePlayer(context:taskContext, name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4),
       generatePlayer(context:taskContext, name: "Oscar Peterson", game: "Spin the Bottle", rating: 5),
       generatePlayer(context:taskContext, name: "Dave Brubeck", game: "Texas Hold 'em Poker", rating: 2)
     ]
+*/
 /*
 	do {
         try taskContext.save(); //that's counterintuitive
