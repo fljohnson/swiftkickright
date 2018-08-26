@@ -35,7 +35,7 @@ final class SampleData:NSObject {
 /**
      Persistent container: use NSPersistentContainer to create the Core Data stack
     */
-    lazy var persistentContainer: NSPersistentContainer = {
+    static lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Ratings")
         
@@ -77,11 +77,10 @@ final class SampleData:NSObject {
 	return rv
   }
 
-	static func generatePlayer(context:NSManagedObjectContext,name:String?,game:String?,rating:Int?) -> Player {
+	static func generatePlayer(taskContext:NSManagedObjectContext,name:String?,game:String?,rating:Int?) -> Player {
 	
 		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Player", into: taskContext) as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
-		                return nil
 		            }
 		rv.update(name,game,rating)
 		return rv
@@ -93,7 +92,6 @@ final class SampleData:NSObject {
 		let taskContext = persistentContainer.viewContext
 		guard let rv = generatePlayer(context:taskContext, name: name, game: game, rating: rating), as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
-		                return nil
 		            }
 		return rv
 		
