@@ -67,10 +67,6 @@ final class SampleData:NSObject {
 	let taskContext = persistentContainer.viewContext
 	var rv: [Player] = []
 
-	if(taskContext == nil)
-	{
-		taskContext = persistentContainer.newBackgroundContext()
-	}
 	if(taskContext != nil)
 {
 rv = [
