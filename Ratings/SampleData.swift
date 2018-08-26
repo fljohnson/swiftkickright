@@ -77,12 +77,12 @@ final class SampleData:NSObject {
 	return rv
   }
 
-	static func generatePlayer(taskContext:NSManagedObjectContext,name:String?,game:String?,rating:Int?) -> Player {
+	static func generatePlayer(context:NSManagedObjectContext,name:String?,game:String?,rating:Int?) -> Player {
 	
-		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Player", into: taskContext) as? Player else {
+		guard let rv = NSEntityDescription.insertNewObject(forEntityName: "Player", into: context) as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
 		            }
-		rv.update(name,game,rating)
+		rv.update(name:name,game:game,rating:rating)
 		return rv
 		
 	}
@@ -90,7 +90,7 @@ final class SampleData:NSObject {
 	static func generatePlayer(name:String?,game:String?,rating:Int?) -> Player {
 	
 		let taskContext = persistentContainer.viewContext
-		guard let rv = generatePlayer(context:taskContext, name: name, game: game, rating: rating), as? Player else {
+		guard let rv = generatePlayer(context:taskContext, name: name, game: game, rating: rating) as? Player else {
 		                fatalError("Error: Failed to create a new Player object!")
 		            }
 		return rv
