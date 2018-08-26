@@ -45,6 +45,8 @@ final class SampleData:NSObject {
         */
         container.loadPersistentStores(completionHandler: { (_, error) in
             guard let error = error as NSError? else { return }
+			let whoops = NSAlert(error:error)
+			whoops.runModal()
             fatalError("Unresolved error \(error), \(error.userInfo)")
         })
         
@@ -75,6 +77,8 @@ final class SampleData:NSObject {
 	do {
         try taskContext.save(); //that's counterintuitive)
     } catch {
+			let whoops = NSAlert(error:error)
+			whoops.runModal()
 		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
     }
 	
