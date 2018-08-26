@@ -79,7 +79,7 @@ final class SampleData:NSObject {
 		fatalError("Error:Blew up trying to save in SampleData::generatePlayersData(): \(error)")
     }
 	*/
-var rv = []
+var rv: [Player] = []
 	return rv
   }
 
