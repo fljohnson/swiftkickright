@@ -66,7 +66,7 @@ extension PlayersViewController {
 		let alertController = UIAlertController(title: "Welcome to My First App", message: SampleData.mensaje, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         present(alertController, animated: true, completion: nil)
-		super.viewDidAppear(animated:animated)
+		super.viewDidAppear(animated)
 	}  
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
