@@ -69,7 +69,7 @@ static var mensaje: String = "Hello World"
 
   
   static func generatePlayersData() -> [Player] {
-	let taskContext = greatCon //persistentContainer.viewContext
+	let taskContext = greatCon! //persistentContainer.viewContext
 	var rv: [Player] = []
 
 	if(taskContext != nil)
