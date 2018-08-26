@@ -366,6 +366,5 @@
 		};
 /* End XCVersionGroup section */
 	};
-	};
 	rootObject = 5FA077331EF5C12F007DB7F9 /* Project object */;
 }
