@@ -31,7 +31,6 @@
 import CoreData
 
 final class SampleData:NSObject {
-static var greatCon: NSManagedObjectContext?
 
 static var mensaje: String = "Hello World"
 /**
@@ -51,6 +50,15 @@ static var mensaje: String = "Hello World"
             fatalError("Unresolved error \(error), \(error.userInfo)")
         })
         
+
+		if(container.viewContext == nil)
+		{
+			mensaje = "IMPLOSION 1"
+		}
+		else
+		{
+	        mensaje = "SUCCESS!"
+		}
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.undoManager = nil // We don't need undo so set it to nil.
         container.viewContext.shouldDeleteInaccessibleFaults = true
@@ -62,14 +70,20 @@ static var mensaje: String = "Hello World"
         */
         container.viewContext.automaticallyMergesChangesFromParent = true
 
-		greatCon = container.viewContext 
-        mensaje = "SUCCESS!"
+		if(container.viewContext == nil)
+		{
+			mensaje += "IMPLOSION 2"
+		}
+		else
+		{
+	        mensaje += "SUCCESS!"
+		}
         return container
     }()
 
   
   static func generatePlayersData() -> [Player] {
-	let taskContext = greatCon! //persistentContainer.viewContext
+	let taskContext = persistentContainer.viewContext
 	var rv: [Player] = []
 
 	if(taskContext != nil)
