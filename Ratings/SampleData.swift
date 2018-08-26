@@ -29,6 +29,7 @@
  */
 
 import CoreData
+import AppKit
 
 final class SampleData:NSObject {
 
